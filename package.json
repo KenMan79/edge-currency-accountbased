@@ -91,12 +91,14 @@
     "eztz.js": "git://github.com/EdgeApp/eztz.git#edge-fixes",
     "jsonschema": "^1.1.1",
     "postinstall-postinstall": "^2.1.0",
+    "react-native-zcash": "git://github.com/EdgeApp/react-native-zcash.git#e063909454eea9294a96920a1b9dc6bfd46cab89",
     "ripple-keypairs": "^0.10.0",
     "ripple-lib": "^1.0.0",
     "stellar-sdk": "^0.11.0",
     "tezos-uri": "^1.0.3",
     "uri-js": "^3.0.2",
-    "url-parse": "^1.4.1"
+    "url-parse": "^1.4.1",
+    "yaob": "^0.3.6"
   },
   "devDependencies": {
     "@babel/core": "^7.9.0",
