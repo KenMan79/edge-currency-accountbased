@@ -38,7 +38,7 @@ export class ZcashPlugin extends CurrencyPlugin {
     if (!isValid) throw new Error('Invalid ZEC mnemonic')
     const hex = mnemonicToSeed(userInput)
     console.log('keytool', this.KeyTool)
-    console.log('keytool props', Object.getOwnPropertyDescriptors(this.KeyTool))
+    // git console.log('keytool props', Object.getOwnPropertyDescriptors(this.KeyTool))
     const zcashSpendKey = await this.KeyTool.deriveSpendingKey(hex)
     // const zcashKey = zecCrypto.getPrivateKeyFromMnemonic(zcashMnemonic)
 
