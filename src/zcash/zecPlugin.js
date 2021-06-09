@@ -145,11 +145,11 @@ export function makeZcashPlugin(
     RNAccountbased,
     JSON.stringify(RNAccountbased)
   )
-  const { KeyTool, AddressTool } = RNAccountbased
+  const { KeyTool2, AddressTool2 } = RNAccountbased
   let toolsPromise: Promise<ZcashPlugin>
   function makeCurrencyTools(): Promise<ZcashPlugin> {
     if (toolsPromise != null) return toolsPromise
-    toolsPromise = Promise.resolve(new ZcashPlugin(io, KeyTool, AddressTool))
+    toolsPromise = Promise.resolve(new ZcashPlugin(io, KeyTool2, AddressTool2))
     return toolsPromise
   }
 
