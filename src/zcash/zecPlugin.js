@@ -39,10 +39,12 @@ export class ZcashPlugin extends CurrencyPlugin {
     const hex = mnemonicToSeed(userInput)
     console.log('keytool', this.KeyTool)
     // git console.log('keytool props', Object.getOwnPropertyDescriptors(this.KeyTool))
-    const zcashSpendKey = await this.KeyTool.deriveSpendingKey(hex)
+    // const zcashSpendKey = await this.KeyTool.deriveSpendingKey(hex)
+    const zcashViewKey = await this.KeyTool.deriveViewingKey(hex)
+    if (typeof zcashViewKey !== 'string') throw new Error(zcashViewKey)
     // const zcashKey = zecCrypto.getPrivateKeyFromMnemonic(zcashMnemonic)
 
-    return { zcashMnemonic: userInput, zcashSpendKey }
+    return { zcashMnemonic: userInput, zcashSpendKey: '' }
   }
 
   async createPrivateKey(walletType: string): Promise<Object> {
