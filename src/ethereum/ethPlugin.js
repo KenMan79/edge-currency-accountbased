@@ -39,10 +39,8 @@ export class EthereumPlugin extends CurrencyPlugin {
 
   async importPrivateKey(userInput: string): Promise<Object> {
     const { pluginId } = this.currencyInfo
-    const {
-      pluginMnemonicKeyName,
-      pluginRegularKeyName
-    } = this.currencyInfo.defaultSettings.otherSettings
+    const { pluginMnemonicKeyName, pluginRegularKeyName } =
+      this.currencyInfo.defaultSettings.otherSettings
     if (/^(0x)?[0-9a-fA-F]{64}$/.test(userInput)) {
       // It looks like a private key, so validate the hex:
       const keyBuffer = Buffer.from(userInput.replace(/^0x/, ''), 'hex')
@@ -77,10 +75,8 @@ export class EthereumPlugin extends CurrencyPlugin {
   }
 
   async createPrivateKey(walletType: string): Promise<Object> {
-    const {
-      pluginMnemonicKeyName,
-      pluginRegularKeyName
-    } = this.currencyInfo.defaultSettings.otherSettings
+    const { pluginMnemonicKeyName, pluginRegularKeyName } =
+      this.currencyInfo.defaultSettings.otherSettings
     const type = walletType.replace('wallet:', '')
 
     if (type !== this.currencyInfo.pluginId) {
@@ -98,11 +94,8 @@ export class EthereumPlugin extends CurrencyPlugin {
 
   async derivePublicKey(walletInfo: EdgeWalletInfo): Promise<Object> {
     const { pluginId, defaultSettings } = this.currencyInfo
-    const {
-      hdPathCoinType,
-      pluginMnemonicKeyName,
-      pluginRegularKeyName
-    } = defaultSettings.otherSettings
+    const { hdPathCoinType, pluginMnemonicKeyName, pluginRegularKeyName } =
+      defaultSettings.otherSettings
     if (walletInfo.type !== `wallet:${pluginId}`) {
       throw new Error('Invalid wallet type')
     }
