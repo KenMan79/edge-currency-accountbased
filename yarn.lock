@@ -5605,9 +5605,9 @@ rc@^1.2.7:
     minimist "^1.2.0"
     strip-json-comments "~2.0.1"
 
-"react-native-zcash@git://github.com/EdgeApp/react-native-zcash#e063909454eea9294a96920a1b9dc6bfd46cab89":
+"react-native-zcash@git://github.com/EdgeApp/react-native-zcash#3bfc098a427e99bd394b042f54a6b9383678b447":
   version "0.0.3"
-  resolved "git://github.com/EdgeApp/react-native-zcash#e063909454eea9294a96920a1b9dc6bfd46cab89"
+  resolved "git://github.com/EdgeApp/react-native-zcash#3bfc098a427e99bd394b042f54a6b9383678b447"
   dependencies:
     rfc4648 "^1.3.0"
 

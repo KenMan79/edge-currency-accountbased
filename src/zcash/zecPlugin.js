@@ -36,14 +36,11 @@ export class ZcashPlugin extends CurrencyPlugin {
   async importPrivateKey(userInput: string): Promise<Object> {
     const isValid = validateMnemonic(userInput)
     if (!isValid) throw new Error('Invalid ZEC mnemonic')
-    const hex = mnemonicToSeed(userInput)
-    console.log('keytool', this.KeyTool)
-    // git console.log('keytool props', Object.getOwnPropertyDescriptors(this.KeyTool))
-    // const zcashSpendKey = await this.KeyTool.deriveSpendingKey(hex)
-    const zcashViewKey = await this.KeyTool.deriveViewingKey(hex)
-    if (typeof zcashViewKey !== 'string') throw new Error(zcashViewKey)
-    // const zcashKey = zecCrypto.getPrivateKeyFromMnemonic(zcashMnemonic)
-
+    const hexBuffer = await mnemonicToSeed(userInput)
+    const hex = hexBuffer.toString('hex')
+    const zcashSpendKey = await this.KeyTool.deriveSpendingKey(hex)
+    if (typeof zcashSpendKey !== 'string')
+      throw new Error('Invalid zcashSpendKey type')
     return { zcashMnemonic: userInput, zcashSpendKey: '' }
   }
 
@@ -147,11 +144,11 @@ export function makeZcashPlugin(
     RNAccountbased,
     JSON.stringify(RNAccountbased)
   )
-  const { KeyTool2, AddressTool2 } = RNAccountbased
+  const { KeyTool, AddressTool } = RNAccountbased
   let toolsPromise: Promise<ZcashPlugin>
   function makeCurrencyTools(): Promise<ZcashPlugin> {
     if (toolsPromise != null) return toolsPromise
-    toolsPromise = Promise.resolve(new ZcashPlugin(io, KeyTool2, AddressTool2))
+    toolsPromise = Promise.resolve(new ZcashPlugin(io, KeyTool, AddressTool))
     return toolsPromise
   }
 
